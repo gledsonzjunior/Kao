@@ -17,10 +17,12 @@ controls.forEach((control) => {
 			currentItem += 1;
 		}
 
+		if (currentItem >= maxItems) {
+			currentItem = 0;
+		}
+
 		if (currentItem < 0) {
 			currentItem = maxItems - 1;
-		} else if (currentItem > maxItems - 1) {
-			currentItem = 0;
 		}
 
 		// biome-ignore lint/complexity/noForEach: <explanation>
@@ -29,6 +31,7 @@ controls.forEach((control) => {
 		items[currentItem].scrollIntoView({
 			inline: "center",
 			behavior: "smooth",
+			block: "nearest",
 		});
 
 		items[currentItem].classList.add("current-item");
